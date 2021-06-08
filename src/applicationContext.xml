@@ -8,10 +8,33 @@
 	http://www.springframework.org/schema/beans/spring-beans.xsd
 	http://www.springframework.org/schema/context
 	http://www.springframework.org/schema/context/spring-context.xsd">
-	
-	
-	<bean id="myCoach" class="com.koxx4.TrackCoach">
-		 
+
+	<context:property-placeholder location="classpath:sport.properties"/>
+
+	<bean id ="myHappyFortuneService" class="com.koxx4.HappyFortuneService"/>
+
+	<bean id="randomFortuneService" class="com.koxx4.RandomFortuneService"/>
+
+	<bean id="myCoach" class="com.koxx4.BikeCoach">
+		<constructor-arg ref="myHappyFortuneService" />
 	</bean>
+
+	<bean id="mySetterCoach" class="com.koxx4.BikeCoach">
+		<property name="fortuneService" ref="randomFortuneService"/>
+		<property name="name" value="${coach.name}"/>
+		<property name="email" value="${coach.email}"/>
+		<property name="team" value="${coach.team}"/>
+	</bean>
+
+		<!--
+    Add a logger config to see logging messages.
+    - For more detailed logs, set values to "FINEST"
+    - For info on logging levels, see: http://www.vogella.com/tutorials/Logging/article.html
+ -->
+		<bean id="myLoggerConfig" class="com.koxx4.MyLoggerConfig" init-method="initLogger">
+			<property name="rootLoggerLevel" value="FINE" />
+			<property name="printedLoggerLevel" value="FINE"/>
+		</bean>
+
 
 </beans>
