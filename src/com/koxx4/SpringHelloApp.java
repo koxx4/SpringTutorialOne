@@ -18,7 +18,7 @@ public class SpringHelloApp {
 			e.printStackTrace();
 		}
 
-		Coach theCoach = context.getBean("mySetterCoach", Coach.class);
+		Coach theCoach = context.getBean("bikeCoach", Coach.class);
 		
 		System.out.println(theCoach.getExerciseRoutine());
 		System.out.println(theCoach.getTodaysFortune());

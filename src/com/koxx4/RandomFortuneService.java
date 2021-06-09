@@ -1,7 +1,10 @@
 package com.koxx4;
 
+import org.springframework.stereotype.Component;
+
 import java.util.Random;
 
+@Component
 public class RandomFortuneService implements FortuneService {
     private String[] fortunes;
     private Random randomGenerator;

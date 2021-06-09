@@ -9,22 +9,9 @@
 	http://www.springframework.org/schema/context
 	http://www.springframework.org/schema/context/spring-context.xsd">
 
-	<context:property-placeholder location="classpath:sport.properties"/>
+	<context:property-placeholder location="sport.properties"/>
+	<context:component-scan base-package="com.koxx4"/>
 
-	<bean id ="myHappyFortuneService" class="com.koxx4.HappyFortuneService"/>
-
-	<bean id="randomFortuneService" class="com.koxx4.RandomFortuneService"/>
-
-	<bean id="myCoach" class="com.koxx4.BikeCoach">
-		<constructor-arg ref="myHappyFortuneService" />
-	</bean>
-
-	<bean id="mySetterCoach" class="com.koxx4.BikeCoach">
-		<property name="fortuneService" ref="randomFortuneService"/>
-		<property name="name" value="${coach.name}"/>
-		<property name="email" value="${coach.email}"/>
-		<property name="team" value="${coach.team}"/>
-	</bean>
 
 		<!--
     Add a logger config to see logging messages.

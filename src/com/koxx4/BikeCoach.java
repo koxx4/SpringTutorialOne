@@ -1,10 +1,22 @@
 package com.koxx4;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+
+@Component
 public class BikeCoach implements Coach
 {
+    @Autowired
+    @Qualifier("happyFortuneService")
     private FortuneService fortuneService;
+
+    @Value("${coach.email}")
     private String email;
+    @Value("${coach.name}")
     private String name;
+    @Value("${coach.team}")
     private String team;
 
     public void setEmail(String email) {
@@ -19,14 +31,14 @@ public class BikeCoach implements Coach
         this.team = team;
     }
 
-    public BikeCoach()
-    {
-
+    public BikeCoach() {
+        System.out.println(">> Inside empty constructor");
     }
 
-    public BikeCoach(FortuneService fortuneService)
-    {
+    @Autowired
+    public BikeCoach(@Qualifier("randomFortuneService")FortuneService fortuneService){
         this.fortuneService = fortuneService;
+        System.out.println(">> Inside constructor with dependency");
     }
 
     @Override
@@ -56,14 +68,15 @@ public class BikeCoach implements Coach
         return email;
     }
 
-    public void setFortuneService(FortuneService fortuneService)
-    {
+    @Autowired
+    @Qualifier("randomFortuneService")
+    public void setFortuneService(FortuneService fortuneService) {
         this.fortuneService = fortuneService;
+        System.out.println(">> Inside setFortuneService()");
     }
 
     @Override
-    public String toString()
-    {
+    public String toString() {
         return "BikeCoach: ";
     }
 }
