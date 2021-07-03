@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 public class BikeCoach implements Coach
 {
     @Autowired
-    @Qualifier("happyFortuneService")
+    @Qualifier("randomFortuneService")
     private FortuneService fortuneService;
 
     @Value("${coach.email}")

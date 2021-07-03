@@ -1,6 +1,8 @@
 package com.koxx4;
 
-public interface FortuneService
-{
+import org.springframework.stereotype.Component;
+
+@Component
+public interface FortuneService {
     String getFortune();
 }

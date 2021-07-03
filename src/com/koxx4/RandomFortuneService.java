@@ -1,5 +1,6 @@
 package com.koxx4;
 
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import java.util.Random;
@@ -21,8 +22,7 @@ public class RandomFortuneService implements FortuneService {
         return "Fortune for today: " + fortunes[randomGenerator.nextInt(fortunes.length)];
     }
 
-    private void populateFortunes()
-    {
+    private void populateFortunes() {
         fortunes[0] = "Keep up the good work!";
         fortunes[1] = "Well today may not be your best day...";
         fortunes[2] = "You're great and not great at the same time :)";
