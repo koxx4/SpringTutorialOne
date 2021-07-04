@@ -11,8 +11,6 @@ import javax.annotation.PreDestroy;
 @Component
 public class BikeCoach implements Coach
 {
-    @Autowired
-    @Qualifier("randomFortuneService")
     private FortuneService fortuneService;
 
     @Value("${coach.email}")
@@ -38,8 +36,7 @@ public class BikeCoach implements Coach
         System.out.println(">> Inside empty constructor");
     }
 
-    @Autowired
-    public BikeCoach(@Qualifier("randomFortuneService")FortuneService fortuneService){
+    public BikeCoach(FortuneService fortuneService){
         this.fortuneService = fortuneService;
         System.out.println(">> Inside constructor with dependency");
     }

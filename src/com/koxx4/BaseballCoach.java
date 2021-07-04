@@ -9,8 +9,6 @@ import org.springframework.stereotype.Component;
 @Scope("prototype")
 public class BaseballCoach implements Coach {
 
-	@Autowired
-	@Qualifier("randomFortuneService")
 	private FortuneService fortuneService;
 
 	private String email;
@@ -31,8 +29,8 @@ public class BaseballCoach implements Coach {
 		this.team = team;
 	}
 
-	public BaseballCoach(){
-
+	public BaseballCoach(FortuneService fortuneService){
+		this.fortuneService = fortuneService;
 	}
 
 	@Override

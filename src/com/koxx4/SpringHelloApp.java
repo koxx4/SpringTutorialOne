@@ -1,18 +1,20 @@
 package com.koxx4;
 
 import org.springframework.beans.BeansException;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class SpringHelloApp {
 
 	public static void main(String[] args) {
 		//load the  spring config file
-		ClassPathXmlApplicationContext context = null;
+		AnnotationConfigApplicationContext context = null;
 		try {
-			context = new ClassPathXmlApplicationContext("applicationContext.xml");
+			context = new AnnotationConfigApplicationContext(AppConfig.class);
 		} catch (BeansException e) {
 			e.printStackTrace();
 		}
+
 		Coach theCoach = context.getBean("bikeCoach", Coach.class);
 		Coach secondCoach = context.getBean("baseballCoach", Coach.class);
 		
