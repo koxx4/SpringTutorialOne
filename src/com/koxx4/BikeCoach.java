@@ -5,6 +5,9 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+
 @Component
 public class BikeCoach implements Coach
 {
@@ -69,11 +72,22 @@ public class BikeCoach implements Coach
     }
 
     @Autowired
-    @Qualifier("randomFortuneService")
+    @Qualifier("happyFortuneService")
     public void setFortuneService(FortuneService fortuneService) {
         this.fortuneService = fortuneService;
         System.out.println(">> Inside setFortuneService()");
     }
+
+    @PostConstruct
+    private void initialize(){
+        System.out.println(">> In init method");
+    }
+
+    @PreDestroy
+    private void cleanup(){
+        System.out.println(">> In cleanup method");
+    }
+
 
     @Override
     public String toString() {
